@@ -1,0 +1,41 @@
+<app-nav></app-nav>
+<br>
+<h1 style="text-align: center; color:dodgerblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Search Employees</h1>
+
+<div class="container-fluid" style="width: 80%">
+    <hr>
+    <div class="row">
+      <div class="col-md-12 mx-auto">
+        <div class="md-form">
+          <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
+          <label for="search">Search</label>
+        </div>
+      </div>
+    </div>
+    <table mdbTable #tableEl="mdbTable" class="z-depth-1"> <!--Displays a searchable table of all employees-->
+        <thead>
+            <tr>
+              <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+              </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employeeData; let i = index">
+              <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+                  scope="row">{{emp.empNumber}}</th>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{emp.empName}}</td>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{emp.empSurname}}</td>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{emp.empBirthDate | slice:0:10}}</td>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{emp.empRoleDesc}}</td>
+              <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{emp.empSalary}}</td>
+            </tr>
+        </tbody>
+        <tfoot class="grey lighten-5 w-100">
+            <tr>
+              <td colspan="6">
+                <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="employeeData"></mdb-table-pagination>
+              </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

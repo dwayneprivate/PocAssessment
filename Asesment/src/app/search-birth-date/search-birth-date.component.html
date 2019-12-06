@@ -1,0 +1,70 @@
+<app-nav></app-nav>
+<br>
+<h1 style="text-align: center; color:dodgerblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Filter employees based on their birth date</h1>
+<hr>
+<div #alert class="alert alert-dark alert-dismissible fade" role="alert" > <!-- Displays alert message if input is missing-->
+        <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong >Please select a date.</strong>
+</div>
+<div class="container-fluid" style="width: 95%">  
+    <div class="row"><!-- Displays all current employees-->
+        <div class="col-5" style="border-style: solid">
+            <h3 style="text-align: center; color:dodgerblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Unfiltered</h3>
+            <table mdbTable>
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr mdbTableCol *ngFor="let emp of employeeData">
+                        <th scope="row">{{emp.empNumber}}</th>
+                        <td>{{emp.empName}}</td>
+                        <td>{{emp.empSurname}}</td>
+                        <td>{{emp.empBirthDate | slice:0:10}}</td>
+                        <td>{{emp.empRoleDesc}}</td>
+                        <td>{{emp.empSalary}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+        </div>    
+        <div class="col-2" style="border-style: solid"> <!-- Displays filter criteria-->
+                <h3 style="text-align: center; color:dodgerblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Filter employees according to their birthday:</h3>
+            <p style="font-weight:bold">Select all employees before or after this date:</p>
+            <select name="before/after" id="BeforeOrAfter" [(ngModel)]="beforeAfter">
+                    <option value="Before" selected="selected">Before</option>
+                    <option value="After">After</option>
+            </select>
+            <div class="md-form">
+                    <input type="date" id="date" style="padding-top: 10%" class="form-control" mdbInput [(ngModel)]="datePicked">
+                    <label for="input" style="padding-top: 10%">Choose your date</label>
+            </div>
+            <button mdbBtn type="button" color="info" mdbWavesEffect (click)="filterEmployees()">Filter</button>
+        </div>
+        <div class="col-5" style="border-style: solid"><!-- Displays filtered list of employees-->
+            <h3 style="text-align: center; color:dodgerblue; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Filtered</h3>
+            <table mdbTable>
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr mdbTableCol *ngFor="let femp of filteredEmployees">
+                            <th scope="row">{{femp.empNumber}}</th>
+                            <td>{{femp.empName}}</td>
+                            <td>{{femp.empSurname}}</td>
+                            <td>{{femp.empBirthDate | slice:0:10}}</td>
+                            <td>{{femp.empRoleDesc}}</td>
+                            <td>{{femp.empSalary}}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,24 @@
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin: 20;
+    list-style-type: none;
+  }
+  
+  .Manager {
+      background-color: maroon;
+      border-color: maroon;
+  }
+
+  .Employee {
+      background-color: darkblue;
+      border-color: darkblue;
+  }
+
+  .Trainee {
+    background-color: grey;
+    border-color: grey;
+  }

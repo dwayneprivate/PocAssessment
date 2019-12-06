@@ -1,0 +1,28 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo unique-color sticky-top" [containerInside]="false" >
+        
+    <mdb-navbar-brand><a class="navbar-brand"><strong>Epi-Use Assessment</strong></a></mdb-navbar-brand>
+
+        <links>
+    
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#">Organizational Chart</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink="/searchEmployees">Search Employees</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect routerLink="/searchBirthDate">Filter Employees By Date Of Birth</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink="/report">Employee Rankings</a>
+                </li>
+    
+            </ul>
+        </links>
+            <!-- Links -->
+    
+    </mdb-navbar>
+    <!--/.Navbar-->
